@@ -70,6 +70,9 @@ place it next to your project or build a skill that pulls in these files.
 cp templates/COMMS_STRATEGY_TEMPLATE.md comms-myproduct.md
 # open it and fill in: product, ICP, offer, tone of voice, TABOOS, target CPA
 ```
+> ⚠️ **Don't commit your filled-in strategy to a public repo.** `COMMS_STRATEGY_TEMPLATE.md`
+> is a blank template. A completed `comms-*.md` may hold real budgets, CPA targets, audience
+> definitions, and client business info. `.gitignore` already excludes `comms-*.md`. See `SECURITY.md`.
 
 ### 3. Connect a Meta Ads MCP server (the "hands")
 Any server that exposes the tools `create_campaign / create_adset / create_ad_creative /
@@ -166,6 +169,12 @@ Every rule in the base is tagged with how much you can trust it:
 Contributions are welcome. Posting fixes, new knowledge, or extra providers — all via Pull Request.
 See `CONTRIBUTING.md` for how to clone, install, run the tests, and propose changes. No one can push
 to this repository directly: outside changes come as Pull Requests that the maintainer reviews and merges.
+
+## Security
+
+This project handles ad-account tokens and money. Before you push anything, read `SECURITY.md`.
+Short version: never commit `.env`, real Ads Manager `*.csv` exports, or a filled-in `comms-*.md`
+(all git-ignored already); keys live only in environment variables; run `gitleaks detect` before pushing.
 
 ## Support
 

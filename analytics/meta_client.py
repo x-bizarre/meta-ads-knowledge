@@ -24,9 +24,12 @@ from typing import List, Dict, Any, Optional
 
 import requests
 
-# The API version can be overridden via the META_API_VERSION environment variable.
-# Meta updates the API roughly every 3 months; old versions are deprecated after 2 years.
-API_VERSION = os.environ.get("META_API_VERSION", "v21.0")
+# Meta releases a new Graph API version roughly every 3 months and deprecates old
+# ones after ~2 years. The default below is a recent-but-stable version; ALWAYS check
+# the current version in the Meta changelog before a serious run and override via the
+# META_API_VERSION environment variable if needed (e.g. export META_API_VERSION=v23.0).
+# https://developers.facebook.com/docs/graph-api/changelog
+API_VERSION = os.environ.get("META_API_VERSION", "v23.0")
 BASE_URL = f"https://graph.facebook.com/{API_VERSION}"
 
 # Fields pulled by default. They are enough for all the analytics scripts.

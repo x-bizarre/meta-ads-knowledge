@@ -1,16 +1,24 @@
-# Секреты — НИКОГДА не коммитить
+# Secrets — NEVER commit these
 .env
+.env.*
 *.token
 *secret*
+*.key
+*.pem
 credentials.json
 
-# Личные выгрузки данных
+# Personal data exports (Ads Manager / analytics)
 *.csv
 report*.csv
 export*.csv
-# НО sample data — часть проекта, её нужно коммитить (исключение из *.csv выше)
+
+# BUT the sample data is part of the project — it must be committed
+# (these negation rules re-include it despite the *.csv rule above)
 !analytics/sample_data/
 !analytics/sample_data/*.csv
+
+# Filled-in comms strategy — may contain real business data, keep it local
+comms-*.md
 
 # Python
 __pycache__/
