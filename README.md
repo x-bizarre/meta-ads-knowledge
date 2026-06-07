@@ -40,6 +40,25 @@ graph LR
 The agent reads the **knowledge base** (what to do / what not to do), drives the **MCP server**
 to act on the ad account, and uses the **analytics scripts** to decide what to kill or scale.
 
+## Where this fits
+
+A Meta Ads MCP server gives an agent the *ability* to act on your account. It does **not** give
+it judgment. This project is the judgment layer on top. The two solve different problems:
+
+| | A typical Meta Ads MCP server | This project (on top of it) |
+|---|---|---|
+| **Role** | The hands — calls the Meta API | The brain — decides what's worth doing |
+| **Can create a campaign?** | ✅ | — (it tells the agent *how* to set it up) |
+| **Knows when to kill vs scale?** | ❌ | ✅ thresholds from `knowledge/04` |
+| **Knows when NOT to act?** | ❌ | ✅ don't judge on noise, don't kill on low CTR |
+| **Reliability-tagged numbers?** | ❌ | ✅ `[OFFICIAL META]` … `[UNVERIFIED]` |
+| **Adjusts thresholds to your geo?** | ❌ | ✅ `knowledge/06` (US medians ≠ your market) |
+| **Post-hoc analytics (significance, fatigue)?** | ❌ | ✅ `analytics/` scripts |
+| **Generates ad creatives?** | ❌ | ✅ `creatives/` (OpenAI + hosting) |
+
+If you only plug in an MCP server, the agent *can* run ads — but it runs them like a beginner.
+Add this layer and it runs them with a senior marketer's discipline. **You need both.**
+
 ---
 
 ## Why you need this
