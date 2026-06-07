@@ -1,6 +1,8 @@
-# Meta Ads AI Agent — knowledge base + analytics for launching ads
+# Meta Ads AI Agent — knowledge base + analytics for launching ads ⭐
 
 **A safety + decision layer for any Meta Ads MCP server.**
+
+> ⭐ **Star this repo if it's useful** — it helps other marketers find it.
 
 A ready-to-use "brain" for an AI agent (Claude, Cursor, any LLM with MCP) that launches and
 runs ads on Meta (Facebook/Instagram) like a seasoned performance marketer — not like a beginner
@@ -21,6 +23,22 @@ Inside:
 > This is the "brain" (the knowledge). The "hands" (pressing buttons in your Meta ad account) are
 > any Meta Ads MCP server. Tested with a fork of `pipeboard-meta-ads-mcp`. The knowledge base does
 > not depend on any specific server.
+
+## How it fits together
+
+```mermaid
+graph LR
+    A[LLM Agent<br/>Claude / Cursor] --> B[Knowledge Base<br/>this repo]
+    A --> C[MCP Server<br/>the 'hands']
+    A --> G[Analytics Scripts<br/>this repo]
+    B --> D[Playbook]
+    B --> E[Reliability Tags]
+    C --> F[Meta Ads Account]
+    G --> H[Kill / Scale Decisions]
+```
+
+The agent reads the **knowledge base** (what to do / what not to do), drives the **MCP server**
+to act on the ad account, and uses the **analytics scripts** to decide what to kill or scale.
 
 ---
 
@@ -191,6 +209,32 @@ Short version: never commit `.env`, real Ads Manager `*.csv` exports, or a fille
 - **Direct contact:** nadezhda.pak.13@gmail.com
 
 ---
+
+## Testing
+
+The analytics scripts ship with **98 unit tests** (no network, no tokens). Run them:
+
+```bash
+pip install -r requirements.txt pytest
+pytest          # tests live in tests/, configured in pyproject.toml
+```
+
+Tests cover the decision logic (kill/scale thresholds), the A/B significance test, the
+fatigue detector, and the Meta API response parser — all on synthetic data. The creative
+generation scripts (`creatives/`) call external APIs and aren't unit-tested; verify them
+with your own keys. See `CONTRIBUTING.md`.
+
+## Version
+
+**v1.0.0** — 2026-06-07 (initial public release)
+- Knowledge base: 8 files (structure, audiences, creatives, optimization, pixel/cold-start,
+  geo, creative pipeline, US/EU benchmarks)
+- Comms strategy template
+- Creative generation + upload helpers (OpenAI, data-URL / hosting)
+- Post-hoc analytics: kill/scale, A/B significance, fatigue detector
+- 98 tests + sample data for a token-free trial
+
+See `CHANGELOG.md` for history.
 
 ## License
 
