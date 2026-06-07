@@ -44,6 +44,22 @@ python analytics/fatigue_curve.py --csv analytics/sample_data/sample_daily.csv
 python analytics/significance_test.py --a 12 380 --b 7 410
 ```
 You'll see kill/scale decisions, the fatigue detector, and a significance test on demo data.
+The first command prints a table like this:
+
+```
+ACTION           NAME                    SPEND  CONV     CPA    CTR  FREQ
+------------------------------------------------------------------------------
+HARD_KILL        AD_Dead_HardKill          300     0       -   1.38   1.6
+SOFT_KILL        AD_Borderline_SoftKill     20     0       -   1.73   1.4
+REFRESH_CREATIVE AD_Fatigued_Refresh       550    55   10.00   0.50   3.8
+WATCH            AD_Overpriced_Watch       540    28   19.29   1.49   1.6
+SCALE            AD_Winner_Scale           390    68    5.74   1.80   1.4
+WAIT             AD_NewLowData_Wait          7     0       -   1.75   1.2
+KEEP             AD_Healthy_Keep           550    55   10.00   1.68   1.5
+```
+
+Each ad gets a decision (kill / refresh / scale / watch / wait / keep) based on the thresholds
+in `knowledge/04_optimization.md` — computed from your `--target-cpa`, not guessed.
 
 ### 1. Connect the knowledge to your agent
 Copy the folder and point the agent to read `AGENT_INSTRUCTIONS.md` first. In Claude Code/Cursor —
