@@ -1,0 +1,23 @@
+# Секреты — НИКОГДА не коммитить
+.env
+*.token
+*secret*
+credentials.json
+
+# Личные выгрузки данных
+*.csv
+report*.csv
+export*.csv
+# НО sample data — часть проекта, её нужно коммитить (исключение из *.csv выше)
+!analytics/sample_data/
+!analytics/sample_data/*.csv
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+
+# OS
+.DS_Store

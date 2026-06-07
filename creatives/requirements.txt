@@ -1,0 +1,14 @@
+# Dependencies for generating and uploading creatives.
+# Install:  pip install -r requirements.txt
+requests>=2.31
+
+# --- Optional: hosting large images (host_image.py) ---
+# Install ONLY for the host you choose:
+#   fal ★ (recommended, tested): pip install fal-client  + export FAL_KEY=...
+#         ⚠️ requires a PAID fal balance, otherwise 403 Exhausted
+#   imgbb (free, for getting started):  nothing extra needed  + export IMGBB_API_KEY=...
+#   r2/S3 (your own bucket, production): pip install boto3     + env R2_* (see host_image.py)
+# fal-client>=0.4
+# boto3
+
+# Everything else (base64, os, argparse) is the Python 3.9+ standard library

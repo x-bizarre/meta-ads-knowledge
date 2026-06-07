@@ -1,0 +1,13 @@
+# Shared dependencies for the meta-ads-knowledge project.
+# Install:  pip install -r requirements.txt
+#
+# Covers analytics/ and creatives/ — the core scripts.
+# Optional dependencies for image hosting are below — uncomment what you need.
+
+requests>=2.31
+
+# --- Optional: hosting large images (creatives/host_image.py) ---
+# fal ★ (recommended):  pip install fal-client>=0.4  + export FAL_KEY=...
+# fal-client>=0.4
+# r2/S3 (your own bucket):  pip install boto3        + env R2_* (see host_image.py)
+# boto3

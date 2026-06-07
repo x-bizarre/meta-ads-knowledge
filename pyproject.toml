@@ -1,0 +1,21 @@
+[project]
+name = "meta-ads-knowledge"
+version = "1.0.0"
+description = "Knowledge base and post-hoc analytics scripts for Meta Ads (Facebook/Instagram). Kill/scale thresholds, stat tests, creative fatigue detector, image generation and hosting."
+requires-python = ">=3.9"
+license = {text = "MIT"}
+
+dependencies = [
+    "requests>=2.31",
+]
+
+[project.optional-dependencies]
+# For hosting large images (creatives/host_image.py)
+fal = ["fal-client>=0.4"]
+r2 = ["boto3"]
+# For tests
+test = ["pytest>=7.0"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["analytics", "creatives"]

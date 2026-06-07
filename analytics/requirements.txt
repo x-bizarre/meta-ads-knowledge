@@ -1,0 +1,4 @@
+# Dependencies for the Meta Ads post-analytics scripts.
+# Install:  pip install -r requirements.txt
+requests>=2.31
+# Everything else (csv, json, math, datetime) is the Python 3.9+ standard library
