@@ -1,8 +1,15 @@
 # Meta Ads AI Agent — knowledge base + analytics for launching ads
 
+**A safety + decision layer for any Meta Ads MCP server.**
+
 A ready-to-use "brain" for an AI agent (Claude, Cursor, any LLM with MCP) that launches and
 runs ads on Meta (Facebook/Instagram) like a seasoned performance marketer — not like a beginner
 making up numbers.
+
+The MCP servers out there are the **hands** — they press buttons in your ad account. This project
+is the missing **brain**: it tells the agent *what* to do and, just as important, *what not to do*
+(don't judge on noise, don't kill on a low CTR, don't scale past learning, don't invent CPA numbers).
+It works on top of any MCP server — it doesn't replace one.
 
 Inside:
 - **Expert knowledge base** — thresholds, benchmarks, and decision discipline drawn from official
@@ -77,6 +84,8 @@ cp templates/COMMS_STRATEGY_TEMPLATE.md comms-myproduct.md
 ### 3. Connect a Meta Ads MCP server (the "hands")
 Any server that exposes the tools `create_campaign / create_adset / create_ad_creative /
 create_ad / update_* / get_insights`. This is what the agent actually uses to edit the ad account.
+**Check your server against the tool contract in [`MCP_COMPATIBILITY.md`](MCP_COMPATIBILITY.md)** —
+it lists exactly what's needed and which server is tested end-to-end.
 
 ### 4. Creative generation (optional, "turnkey")
 ```bash
